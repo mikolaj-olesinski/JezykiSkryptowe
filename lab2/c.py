@@ -4,7 +4,7 @@ from helpers import biggest_resource
 
 def get_biggest_resource():
     path, max = biggest_resource()
-    output = f"Path to the largest resource {path}, size: {max}"
+    output = f"Path to the largest resource {path}, size: {max} \n"
     sys.stdout.write(output)
 
 if __name__ == "__main__":
