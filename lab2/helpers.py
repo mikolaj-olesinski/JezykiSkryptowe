@@ -1,26 +1,26 @@
 from getters import *
 
-def count_codes(code):
+def count_codes(code, file=sys.stdin):
     counter = 0
-    for line in sys.stdin:
+    for line in file:
         if get_response_code(line) == code:
             counter += 1
     return counter
 
 
-def sum_data():
+def sum_data(file=sys.stdin):
     total_data = 0
-    for line in sys.stdin:
+    for line in file:
         data = get_bytes(line)
-        if get_request(line) == "GET" and data != "-":
+        if data != "-":
             total_data += int(get_bytes(line))
     return total_data
 
 
-def biggest_resource():
+def biggest_resource(file=sys.stdin):
     max = 0
     path = ""
-    for line in sys.stdin:
+    for line in file:
         bytes = get_bytes(line)
         if bytes.isdigit() and int(bytes) > max:
             max = int(bytes)
@@ -29,15 +29,16 @@ def biggest_resource():
 
 
 
-def graphics_ratio():
+def graphics_ratio(file=sys.stdin):
     graphics = 0
     others = 0
-    for line in sys.stdin:
+    for line in file:
         if get_file_extension(line) in ["gif", "jpg", "jpeg", "xbm"]:
             graphics += 1
         else:
             others += 1
     return graphics/others
+
 
 def to_datetime_object(date):
     date_format = "%d/%b/%Y:%H:%M:%S"
@@ -48,12 +49,18 @@ def to_datetime_object(date):
         return None
 
 def is_beetwen_hours(start, end, line):
+
     date = to_datetime_object(get_date(line))
-    if (date.hour >= start or date.hour <= end - 1) and (date.hour > 0 and date.hour < 24):
+
+    if (start < 0 or start > 23 or end < 0 or end > 23):
+        raise ValueError("Wrong hour")
+    
+    elif (date.hour >= start and date.hour < end):
         return True
     return False
 
 
 def get_day_of_week(line):
     date = to_datetime_object(get_date(line))
+    
     return date.weekday()

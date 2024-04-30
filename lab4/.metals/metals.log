@@ -1,0 +1,64 @@
+2024.04.16 12:28:56 INFO  Started: Metals version 1.3.0 in folders '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski' for client Visual Studio Code 1.74.2.
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [scribe.slf4j.ScribeServiceProvider@160671e4]
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@64a83c5d]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [scribe.slf4j.ScribeServiceProvider@160671e4]
+2024.04.16 12:29:00 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.04.16 12:29:00 WARN  no build tool detected in workspace '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2024.04.16 12:29:00 WARN  Build server is not auto-connectable.
+kwi 16, 2024 12:29:01 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+2024.04.16 12:29:04 INFO  time: code lens generation in 2.74s
+2024.04.16 12:29:04 INFO  time: code lens generation in 3.02s
+2024.04.16 12:29:21 INFO  no build target found for /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/zad4.java. Using presentation compiler with project's scala-library version: 3.3.3
+kwi 16, 2024 12:29:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+kwi 16, 2024 12:29:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 37
+kwi 16, 2024 12:29:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 41
+kwi 16, 2024 12:29:23 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-16/r_compiler-error_12-29-23-192.md
+2024.04.16 13:07:21 INFO  Shutting down server
+2024.04.16 13:07:21 INFO  shutting down Metals
+2024.04.16 13:07:21 INFO  Exiting server
+2024.04.16 15:16:41 INFO  Started: Metals version 1.3.0 in folders '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski' for client Visual Studio Code 1.74.2.
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [scribe.slf4j.ScribeServiceProvider@56854b9b]
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@600bf989]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [scribe.slf4j.ScribeServiceProvider@56854b9b]
+2024.04.16 15:16:42 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.04.16 15:16:42 WARN  no build tool detected in workspace '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2024.04.16 15:16:43 WARN  Build server is not auto-connectable.
+2024.04.16 15:16:46 INFO  restarted 0 presentation compilers
+2024.04.16 15:18:19 INFO  Shutting down server
+2024.04.16 15:18:19 INFO  shutting down Metals
+2024.04.16 15:18:19 INFO  Exiting server
+2024.04.23 15:29:18 INFO  Started: Metals version 1.3.0 in folders '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski' for client Visual Studio Code 1.74.2.
+SLF4J: Class path contains multiple SLF4J providers.
+SLF4J: Found provider [scribe.slf4j.ScribeServiceProvider@4fe87a8b]
+SLF4J: Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@4730f531]
+SLF4J: See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual provider is of type [scribe.slf4j.ScribeServiceProvider@4fe87a8b]
+2024.04.23 15:29:19 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.04.23 15:29:34 INFO  no build target found for /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/zad4.java. Using presentation compiler with project's scala-library version: 3.3.3
+kwi 23, 2024 3:29:35 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+2024.04.23 15:29:35 WARN  no build tool detected in workspace '/Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2024.04.23 15:29:35 WARN  Build server is not auto-connectable.
+2024.04.23 15:29:37 INFO  time: code lens generation in 2.02s
+kwi 23, 2024 3:29:38 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-23/r_compiler-error_15-29-38-095.md
+kwi 23, 2024 3:29:38 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-23/r_compiler-error_15-29-38-506.md
+kwi 23, 2024 3:29:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-23/r_compiler-error_15-29-49-075.md
+kwi 23, 2024 3:30:59 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-23/r_compiler-error_15-30-59-624.md
+kwi 23, 2024 3:30:59 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /Users/mikolajolesinski/Desktop/JezykiSkryptowe/lab4_JezykiSkryptowe_Olesinski/.metals/.reports/metals-full/2024-04-23/r_compiler-error_15-30-59-909.md
+2024.04.23 15:43:53 INFO  Shutting down server
+2024.04.23 15:43:53 INFO  shutting down Metals
+2024.04.23 15:43:53 INFO  Exiting server

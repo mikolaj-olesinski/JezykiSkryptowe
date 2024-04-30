@@ -29,6 +29,7 @@ def get_path(line):
     except(IndexError):
         return ""
     
+    
 def get_file_extension(line):
     return get_path(line).split(".")[-1]
     
