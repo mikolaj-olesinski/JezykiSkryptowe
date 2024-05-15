@@ -38,8 +38,8 @@ def log_class(cls, level):
 
             self.__class__ = type(self._instance.__class__.__name__,
                                   (self.__class__, self._instance.__class__),
-                                  {}) 
-            self.__dict__ = self._instance.__dict__ 
+                                  {})  #zmienia na klase dziedziczaca po klasie ktora chcemy zastapic
+            self.__dict__ = self._instance.__dict__ #slownik atrybutow
 
     return Wrapper
 

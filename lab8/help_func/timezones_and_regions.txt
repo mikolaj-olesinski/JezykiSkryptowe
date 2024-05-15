@@ -1,0 +1,26 @@
+-1200 North America/Baker Island
+-1100 North America/Jarvis Island
+-1000 North America/Hawaii
+-0930 French Polynesia
+-0900 North America/Alaska
+-0800 North America/California
+-0700 North America/Colorado
+-0600 North America/Ohio
+-0500 South America/Colombia
+-0400 South America/Venezuela
+-0300 South America/Argentina
++0000 Africa/Senegal
++0100 Europe/Poland
++0200 Europe/Greece
++0300 Europe/Moscow
++0400 Asia/Azerbaijan
++0500 Asia/Uzbekistan
++0600 Asia/Kazakhstan
++0700 Asia/Thailand
++0800 Asia/China
++0900 Asia/Japan
++1000 Australia/Canberra
++1100 Australia/Sydney
++1200 Pacific/Fiji
++1300 Pacific/Tongatapu
++1400 Pacific/Kiritimati
