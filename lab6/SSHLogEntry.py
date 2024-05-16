@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import re, ipaddress
 from datetime import datetime
-from lab5_JezykiSkryptowe_Olesinski.zad1_1 import get_user_from_log, get_ipv4s_from_log, read_log, get_message_type
+from lab5.zad1_1 import get_user_from_log, get_ipv4s_from_log, read_log, get_message_type
 
 class SSHLogEntry(ABC):
 

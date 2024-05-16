@@ -36,6 +36,19 @@ def get_user_from_log(log_description: str) -> str:
     users = re.search(user_pattern, log_description)
     return users.group().split()[-1] if users else None
 
+def get_user(log_description: str) -> str:
+    user_pattern = r'user (\S+)'
+    second_user_pattern = r'for (\S+)'
+    users = re.search(user_pattern, log_description)
+
+    if users:
+        return users.group(1)
+    else:
+        users = re.search(second_user_pattern, log_description)
+    
+    return users.group(1) if users else None
+
+
 
 def get_message_type(log_description: str) -> str:
     success_login_pattern = r'session opened for user'
@@ -44,6 +57,8 @@ def get_message_type(log_description: str) -> str:
     incorrect_password_pattern = r'authentication failure'
     incorrect_username_pattern = r'Invalid user'
     intrusion_attempt_pattern = r'POSSIBLE BREAK-IN ATTEMPT!'
+    error_pattern = r'error: '
+    accepted_password_pattern = r'Accepted password for'
     
     if re.search(success_login_pattern, log_description):
         return "Successful login"
@@ -57,6 +72,10 @@ def get_message_type(log_description: str) -> str:
         return "Incorrect username"
     elif re.search(intrusion_attempt_pattern, log_description):
         return "Break-in attempt"
+    elif re.search(error_pattern, log_description):
+        return "Error"
+    elif re.search(accepted_password_pattern, log_description):
+        return "Accepted password"
     else:
         return "Other"
 
@@ -64,3 +83,4 @@ if __name__ == "__main__":
     for log in read_file():
         log = read_log(log)
         print(log)
+

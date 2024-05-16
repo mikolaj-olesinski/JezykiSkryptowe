@@ -65,6 +65,6 @@ if __name__ == "__main__":
     i=0
     for log in read_file():
         i+=1
-        if i > 10:
+        if i > 100:
             break
-        read_l_logging(log, logging.INFO)
+        read_l_logging(log)

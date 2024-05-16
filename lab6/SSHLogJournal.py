@@ -1,5 +1,5 @@
 from SSHLogEntry import SSHLogEntry, RejectedPasswordLogEntry, AcceptedPasswordLogEntry, ErrorLogEntry, OtherLogEntry
-from lab5_JezykiSkryptowe_Olesinski.zad1_1 import get_message_type
+from lab5.zad1_1 import get_message_type
 import ipaddress
 
 class SSHLogJournal:

@@ -1,6 +1,6 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QDateEdit, QListWidget, QFormLayout
-from PySide6.QtCore import Qt, QRect
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QListWidget, QFormLayout
+from PySide6.QtCore import Qt, QDate
 from widgets import FileSelectionWidget, DateSelectionWidget, LabelForForm
 from constants import (WIDTH, HEIGHT, 
                        MIDDLE_LAYOUT_WIDTH, 
@@ -133,6 +133,7 @@ class UI_MainWindow(QWidget):
         date_from_label = QLabel("Data od:")
         date_to_label = QLabel("Data do:")
         date_picker_from = DateSelectionWidget()
+        date_picker_from.date_edit.setDate(QDate(1995, 7, 1))
         date_picker_to = DateSelectionWidget()
         date_picker_from.date_edit.setObjectName("date_picker_from")
         date_picker_to.date_edit.setObjectName("date_picker_to")
@@ -150,7 +151,7 @@ class UI_MainWindow(QWidget):
         middle_right_widget = widget.findChild(QWidget, "middle_right_widget")
         list_widget = QListWidget(middle_right_widget)
         list_widget.setObjectName("list_widget")
-        list_widget.setFixedSize(500, 480)
+        list_widget.setFixedSize(500, 400)
         middle_left_bottom_layout.addWidget(list_widget, alignment=Qt.AlignTop | Qt.AlignCenter)
 
         remote_host_label = LabelForForm("Remote Host:", REMOTE_HOST_LABEL_WIDTH, REMOTE_HOST_LABEL_HEIGHT)
@@ -207,8 +208,8 @@ class UI_MainWindow(QWidget):
         layout.addWidget(next_button, alignment=Qt.AlignLeft)
         layout.addWidget(clear_button, alignment=Qt.AlignRight)
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    main_window = UI_MainWindow()
-    main_window.show()
-    sys.exit(app.exec())
+# if __name__ == "__main__":
+#     app = QApplication(sys.argv)
+#     main_window = UI_MainWindow()
+#     main_window.show()
+#     sys.exit(app.exec())

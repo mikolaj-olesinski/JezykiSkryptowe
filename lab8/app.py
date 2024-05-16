@@ -1,6 +1,6 @@
 from gui import UI_MainWindow   
 from PySide6.QtWidgets import QApplication, QMessageBox, QWidget, QDateEdit, QLabel, QPushButton, QListWidgetItem, QListWidget
-from widgets import FileSelectionWidget
+from widgets import FileSelectionWidget, QListItem
 from help_func.read_http_log import filter_logs_by_date, read_l
 from help_func.timezones import get_region_from_timezone
 from constants import LOG_MASTER_LENGTH
@@ -8,10 +8,10 @@ import sys
 
 need_refresh = False
 all_logs = []
-logs_and_logs_short = {}
 
 def handle_select_file_button(main_window: UI_MainWindow):
     file_widget = main_window.findChild(FileSelectionWidget, "file_widget")
+    print("selfsfsdf")
 
     file_path = file_widget.select_file()
     add_file_to_list_widget(main_window, file_path)
@@ -32,16 +32,27 @@ def add_file_to_list_widget(main_window: UI_MainWindow, file_path: str):
     
     for line in file:
         short_line = line[:LOG_MASTER_LENGTH] + "..." if len(line) > LOG_MASTER_LENGTH else line
+        
+        custom_item = QListItem(short_line, line)
+        item = QListWidgetItem(custom_item.display_text)
+        item.setData(100, custom_item.info_text)  # UserRole 100 to store info_text
+        list_widget.addItem(item)
 
-        global logs_and_logs_short
-        logs_and_logs_short[short_line] = line
-        list_widget.addItem(short_line)
-
+        
 
 def handle_list_widget_item_click(main_window: UI_MainWindow):
     list_widget = main_window.findChild(QListWidget, "list_widget")
+    previous_button = main_window.findChild(QPushButton, "previous_button")
+    next_button = main_window.findChild(QPushButton, "next_button")
+
+    if get_current_list_item_row(list_widget) != 0:
+        previous_button.setVisible(True)
+    
+    if get_current_list_item_row(list_widget) != list_widget.count() - 1:
+        next_button.setVisible(True)
+
     selected_item = list_widget.currentItem()
-    selected_item = logs_and_logs_short[selected_item.text()]
+    selected_item = selected_item.data(100) if selected_item else None
     if selected_item:
         fill_labels_from_log(main_window, selected_item)
 
@@ -119,25 +130,41 @@ def get_current_list_item_row(list_widget):
 
 def handle_previous_button(main_window: UI_MainWindow):
     list_widget = main_window.findChild(QListWidget, "list_widget")
+    previous_button = main_window.findChild(QPushButton, "previous_button")
+    next_button = main_window.findChild(QPushButton, "next_button")
+
     current_row = get_current_list_item_row(list_widget)
+    previous_button.setVisible(False) if current_row == 1 else None
+
+    if current_row is None:
+        list_widget.setCurrentRow(0)
+        fill_labels_from_log(main_window, list_widget.currentItem().data(100))
+        previous_button.setVisible(False)
+
     if current_row > 0:
         list_widget.setCurrentRow(current_row - 1)
-        fill_labels_from_log(main_window, list_widget.currentItem().data)
-    elif current_row == None:
-        list_widget.setCurrentRow(0)
-        fill_labels_from_log(main_window, list_widget.currentItem().data)
+        fill_labels_from_log(main_window, list_widget.currentItem().data(100))
+        next_button.setVisible(True)
+
 
 def handle_next_button(main_window: UI_MainWindow):
     list_widget = main_window.findChild(QListWidget, "list_widget")
+    next_button = main_window.findChild(QPushButton, "next_button")
+    previous_button = main_window.findChild(QPushButton, "previous_button")
+
     current_row = get_current_list_item_row(list_widget)
+    next_button.setVisible(False) if current_row == list_widget.count() - 2 else None
     
+    if current_row is None:
+        list_widget.setCurrentRow(0)
+        fill_labels_from_log(main_window, list_widget.currentItem().data(100))
+
+
     if current_row < list_widget.count() - 1:
         list_widget.setCurrentRow(current_row + 1)
-        fill_labels_from_log(main_window, list_widget.currentItem().data)
-
-    elif current_row == None:
-        list_widget.setCurrentRow(0)
-        fill_labels_from_log(main_window, list_widget.currentItem().data)
+        fill_labels_from_log(main_window, list_widget.currentItem().data(100))
+        previous_button.setVisible(True)
+    
 
 def handle_clear_button(main_window: UI_MainWindow):
     clear_all_labels(main_window)
@@ -161,9 +188,11 @@ def update_list_widget(main_window: UI_MainWindow, logs):
     for log in logs:
         short_log = log[:LOG_MASTER_LENGTH] + "..." if len(log) > LOG_MASTER_LENGTH else log
 
-        global logs_and_logs_short
-        logs_and_logs_short[short_log] = log
-        list_widget.addItem(short_log)
+        custom_item = QListItem(short_log, log)
+        item = QListWidgetItem(custom_item.display_text)
+        item.setData(100, custom_item.info_text)  # UserRole 100 to store info_text
+        list_widget.addItem(item)
+
 
 def get_all_logs(main_window: UI_MainWindow):
     global need_refresh

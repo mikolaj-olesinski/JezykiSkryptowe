@@ -1,7 +1,7 @@
 from SSHLogEntry import SSHLogEntry, RejectedPasswordLogEntry, AcceptedPasswordLogEntry, ErrorLogEntry, OtherLogEntry
 from SSHLogJournal import SSHLogJournal
 from SSHUser import SSHUser
-from lab5_JezykiSkryptowe_Olesinski.zad1_1 import read_file
+from lab5_JezykiSkryptowe_Olesinski.zad1_1 import read_file, read_log, get_user
 from datetime import datetime
 
 test_logs = ['Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2', 
@@ -9,7 +9,7 @@ test_logs = ['Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid use
              'Dec 10 07:51:15 LabSZ sshd[24324]: error: Received disconnect from 195.154.37.122: 3: com.jcraft.jsch.JSchException: Auth fail [preauth]',
              'Dec 10 07:53:26 LabSZ sshd[24329]: Connection closed by 194.190.163.22 [preauth]',
              'Dec 10 07:55:55 LabSZ sshd[24331]: input_userauth_request: invalid user test [preauth]',
-             'Dec 10 07:56:02 LabSZ sshd[24331]: Failed password for invalid user test from 52.80.34.196 port 36060 ssh2'
+             'Dec 10 07:56:02 LabSZ sshd[24331]: Failed password for invalid user !user from 52.80.34.196 port 36060 ssh2'
              'Dec 10 07:56:13 LabSZ sshd[24333]: Did not receive identification string from 103.207.39.165']
 
 def zad1():
@@ -65,23 +65,35 @@ def zad6():
     print("__gt__", log > log2)
 
 
-def zad7():
+def zad7(show_users=False):
     entrys_and_users = []
     journal = SSHLogJournal()
     iter_journal = iter(journal)
-    usernames = ['root', '', 'abc', '1dasd', 'cs da', 'ds-dsd' , "fdsfuhjsdiufhisudhfuihfuhsduyfufsduyfbuydfuysbhfuhsdbfuhdsbuhfbdsufbsdjfbdsuhbfuhdsbfuhdsbfusbfubdsudfbsudbfdsbu"]
+    usernames = ['root', '', '!abc', '1dasd', 'cs da', "fdsfuhjsdiufhisudhfuihfuhsduyfufsduyfbuydfuysbhfuhsdbfuhdsbuhfbdsufbsdjfbdsuhbfuhdsbfuhdsbfusbfubdsudfbsudbfdsbu"]
 
     for user, log in zip(usernames, test_logs):
         user = SSHUser(user)
 
         journal.append(log)
-        log = next(iter_journal)
+        log_j = next(iter_journal)
+
+        log_dict = read_log(log)
+        user_from_log = get_user(log_dict[-1])
+        user_from_log = SSHUser(user_from_log, log_dict[0])
 
         entrys_and_users.append(user)
-        entrys_and_users.append(log)
+        entrys_and_users.append(log_j)
+        entrys_and_users.append(user_from_log)
+
     
     for entry in entrys_and_users:
         print(entry.validate())
+
+
+        if isinstance(entry, SSHUser) and show_users:
+            print("user before", entry.username)
+
+                
 
 def test_journal():
     journal = SSHLogJournal()
@@ -97,6 +109,7 @@ def test_journal():
     print()
     log = AcceptedPasswordLogEntry(test_logs[1])
     print("__contains__", log in journal)
+    print("__contains__", "aa" in journal)
 
     print()
     print("filter by ip: 173.234.31.186", journal.filter_by_ip("173.234.31.186"))
@@ -113,23 +126,23 @@ def test_journal():
     print(journal.date[:5])
         
 if __name__ == '__main__':
-    print("------- Zadanie 1 --------")
+    print("---------------------------------------- Zadanie 1 ----------------------------------------")
     zad1()
 
-    print("\n------- Zadanie 2 -------")
+    print("\n\n\n---------------------------------------- Zadanie 2 ----------------------------------------")
     zad2()
 
-    print("\n------- Zadanie 3 -------")
+    print("\n\n\n---------------------------------------- Zadanie 3 ----------------------------------------")
     zad3()
 
-    print("\n------- Zadanie 5 -------")
+    print("\n\n\n---------------------------------------- Zadanie 5 ----------------------------------------")
     zad5()
 
-    print("\n------- Zadanie 6 -------")
+    print("\n\n\n---------------------------------------- Zadanie 6 ----------------------------------------")
     zad6()
 
-    print("\n------- Zadanie 7 -------")
-    zad7()
+    print("\n\n\n---------------------------------------- Zadanie 7 ----------------------------------------")
+    zad7(show_users=True)
 
-    print("\n------- Test Journal -------")
+    print("\n\n\n----------------------------------------  Test Journal ----------------------------------------")
     test_journal()

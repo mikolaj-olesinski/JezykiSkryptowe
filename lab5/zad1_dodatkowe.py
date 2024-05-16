@@ -50,6 +50,6 @@ def detect_bruteforce(file=sys.stdin, max_interval=100, max_attempts=4, single_u
 
 
 if __name__ == "__main__":
-    detect_bruteforce(max_interval=100, max_attempts=100, single_user=True)
+    detect_bruteforce(max_interval=100, max_attempts=10, single_user=True)
 
 

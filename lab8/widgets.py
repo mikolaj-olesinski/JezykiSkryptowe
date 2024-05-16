@@ -52,6 +52,9 @@ class DateSelectionWidget(QWidget):
         self.date_edit.setDate(QDate.currentDate())    
         layout.addWidget(self.date_edit)
 
+    def setDate(self, date):
+        self.date_edit.setDate()
+
 class LabelForForm(QWidget):
     def __init__(self, text, width, height, border=True):
         super().__init__()
@@ -72,4 +75,30 @@ class LabelForForm(QWidget):
 
     def set_info(self, info):
         self.label_with_info.setText(info)
+
+# class QListItem(QWidget):
+#     def __init__(self, display_text, info_text):
+#         super().__init__()
+
+#         self.display_text = display_text
+#         self.info_text = info_text
+
+#         layout = QHBoxLayout()
+#         layout.setContentsMargins(0, 0, 0, 0)
+#         self.setLayout(layout)
+
+
+#         self.display_label = QLabel(display_text)
+
+#     def get_info(self):
+#         return self.info_text
+    
+#     def set_display_text(self, text):
+#         self.display_label.setText(text)
+
+
+class QListItem():
+    def __init__(self, display_text, info_text):
+        self.display_text = display_text
+        self.info_text = info_text
         
