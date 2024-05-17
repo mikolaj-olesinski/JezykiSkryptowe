@@ -51,7 +51,7 @@ class SSHLogEntry(ABC):
     def __eq__(self, other):
         if not isinstance(other, SSHLogEntry):
             return False
-        return self.date == other.date 
+        return (self.date, self.host_name, self.app_name, self.pid, self._message) == (other.date, other.host_name, other.app_name, other.pid, other._message)
 
     def __lt__(self, other):
         if not isinstance(other, SSHLogEntry):

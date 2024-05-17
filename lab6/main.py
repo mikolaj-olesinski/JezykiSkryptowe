@@ -1,8 +1,8 @@
 from SSHLogEntry import SSHLogEntry, RejectedPasswordLogEntry, AcceptedPasswordLogEntry, ErrorLogEntry, OtherLogEntry
 from SSHLogJournal import SSHLogJournal
 from SSHUser import SSHUser
-from lab5_JezykiSkryptowe_Olesinski.zad1_1 import read_file, read_log, get_user
 from datetime import datetime
+from lab5.zad1_1 import read_file, read_log, get_user
 
 test_logs = ['Dec 10 06:55:48 LabSZ sshd[24200]: Failed password for invalid user webmaster from 173.234.31.186 port 38926 ssh2', 
              'Dec 10 09:32:20 LabSZ sshd[24680]: Accepted password for fztu from 119.137.62.142 port 49116 ssh2',
