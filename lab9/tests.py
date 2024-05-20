@@ -1,6 +1,5 @@
 import pytest
 from datetime import datetime
-from lab5.zad1_1 import read_log, get_message_type
 from SSHLogEntryRefactoraized import SSHLogEntry, RejectedPasswordLogEntry, AcceptedPasswordLogEntry, ErrorLogEntry, OtherLogEntry, create_ssh_log_entry
 from SSHLogJournalRefactoraized import SSHLogJournal
 import ipaddress
@@ -19,8 +18,6 @@ test_logs = [
 ]
 
 
-
-
 expected_dates = [
     datetime(1900, 12, 10, 7, 51, 15),
     datetime(1900, 12, 10, 7, 56, 2),
@@ -35,16 +32,16 @@ expected_dates = [
 ]
 
 expected_ipaddresses = [
-    ipaddress.IPv4Address('195.154.37.122'),
+    ipaddress.IPv4Address('195.154.37.122'), #poprawny adres email
     ipaddress.IPv4Address('52.80.34.196'),
     ipaddress.IPv4Address('254.234.31.186'),
-    lambda: ipaddress.IPv4Address('194.190.163.333'),
+    lambda: ipaddress.IPv4Address('194.190.163.333'), #niepoprawnie sformułowanego adresu IPv4
     lambda: ipaddress.IPv4Address('256.234.31.186'),  
     lambda: ipaddress.IPv4Address('999.137.62.142'),
     None,
     None,
     None,
-    None
+    None #brak adresu IP
 ]
 
 @pytest.mark.parametrize("log, expected_date", zip(test_logs, expected_dates))
