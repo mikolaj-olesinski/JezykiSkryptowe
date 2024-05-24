@@ -13,7 +13,7 @@ class SSHLogEntry():
 
     def __init__(self, log) -> None: 
         log_dict = read_log(log)
-        if log_dict is not None:
+        if log_dict:
             self.date = log_dict[0]
             self.host_name = log_dict[1]
             self.app_name = log_dict[2]

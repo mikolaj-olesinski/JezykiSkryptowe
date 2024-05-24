@@ -47,9 +47,13 @@ def handle_list_widget_item_click(main_window: UI_MainWindow):
 
     if get_current_list_item_row(list_widget) != 0:
         previous_button.setVisible(True)
+    elif get_current_list_item_row(list_widget) == 0:
+        previous_button.setVisible(False)
     
     if get_current_list_item_row(list_widget) != list_widget.count() - 1:
         next_button.setVisible(True)
+    elif get_current_list_item_row(list_widget) == list_widget.count() - 1:
+        next_button.setVisible(False)
 
     selected_item = list_widget.currentItem()
     selected_item = selected_item.data(100) if selected_item else None

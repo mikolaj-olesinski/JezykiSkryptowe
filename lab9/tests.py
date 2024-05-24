@@ -4,6 +4,8 @@ from SSHLogEntryRefactoraized import SSHLogEntry, RejectedPasswordLogEntry, Acce
 from SSHLogJournalRefactoraized import SSHLogJournal
 import ipaddress
 
+
+
 test_logs = [
     'Dec 10 07:51:15 LabSZ sshd[24324]: error: Received disconnect from 195.154.37.122: 3: com.jcraft.jsch.JSchException: Auth fail [preauth]',
     'Dec 10 07:56:02 LabSZ sshd[24331]: Failed password for invalid user fztu from 52.80.34.196 port 36060 ssh2',
@@ -43,6 +45,42 @@ expected_ipaddresses = [
     None,
     None #brak adresu IP
 ]
+
+
+def test_time_extraction():
+    entry = "Dec 10 07:56:02 LabSZ sshd[24331]: Failed password for invalid user fztu from 52.80.34.196 port 36060 ssh2"
+    ssh_log_entry = RejectedPasswordLogEntry(entry)
+    assert ssh_log_entry.date == datetime(1900, 12, 10, 7, 56, 2)
+
+
+def test_invalid_log_entry_date():
+    entry = "Invalid log entry"
+    with pytest.raises(ValueError):
+        OtherLogEntry(entry).date
+
+
+def test_empty_log_entry_date():
+    entry = ""
+    with pytest.raises(ValueError):
+        OtherLogEntry(entry).date
+
+def trst_ip_extraction():
+    entry = "Dec 10 07:56:02 LabSZ sshd[24331]: Failed password for invalid user fztu from 52.80.34.196 port 36060 ssh2"
+    ssh_log_entry = RejectedPasswordLogEntry(entry)
+    assert ssh_log_entry.get_ipv4() == ipaddress.IPv4Address('52.80.34.196')
+
+def test_invalid_ip_extraction():
+    entry = "Dec 10 09:32:20 LabSZ sshd[24680]: Accepted password for fztu from 999.137.62.142 port 49116 ssh2"
+    ssh_log_entry = AcceptedPasswordLogEntry(entry)
+    with pytest.raises(ipaddress.AddressValueError):
+        ssh_log_entry.get_ipv4()
+
+def test_no_ip_extraction():
+    entry = "Dec 10 07:42:49 LabSZ sshd[24318]: input_userauth_request: invalid user inspur [preauth]"
+    ssh_log_entry = OtherLogEntry(entry)
+    assert ssh_log_entry.get_ipv4() == None
+
+
 
 @pytest.mark.parametrize("log, expected_date", zip(test_logs, expected_dates))
 def test_sshlog_entry_creation_time(log, expected_date):

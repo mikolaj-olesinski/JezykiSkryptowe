@@ -13,13 +13,14 @@ def at_least(n, pred, iterable):
 def at_most(n, pred, iterable):
     return sum(1 for x in iterable if pred(x)) <= n
 
-pred = lambda x: x % 2 == 0
+def is_even(x): return x % 2 == 0
+
 list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-print(forall(pred, list))
-print(exists(pred, list))
-print(at_least(3, pred, list))
-print(at_most(3, pred, list))
+print(forall(is_even, list))
+print(exists(is_even, list))
+print(at_least(3, is_even, list))
+print(at_most(3, is_even, list))
 
 print("--------------------")
 list2 = [False, False, False, False, False, False, False, False, False, True]

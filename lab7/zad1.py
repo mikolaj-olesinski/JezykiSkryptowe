@@ -57,7 +57,7 @@ print('most_common_element([]): ', most_common_element([]))
 print()
 print('pierwiastek(3, 0.1): ', pierwiastek(3, 0.1))
 print('pierwiastek(-5, 0.1): ',pierwiastek(-5, 0.1))
-print('pierwiastek(0, 0.1): ',pierwiastek(0, 0.1))
+print('pierwiastek(0, 0.1): ',pierwiastek(0, -0.1))
 print('pierwiastek(4, 0.1): ',pierwiastek(4, 0.1))
 
 print()
